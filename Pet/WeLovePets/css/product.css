@@ -1,0 +1,36 @@
+@import "style.css";
+
+/*  product   */
+
+.product {
+    padding: 100px 0;
+}
+
+.product-top {
+    margin-bottom: 30px;
+}
+.product-top p {
+    font-family: var(--main-text-font);
+    margin: 0 12px;
+    font-size: 12px;
+}
+
+.product-content-left {
+    width: 50%;
+}
+
+.product-content-right {
+    width: 50%;
+}
+
+.product-content-left-big-img {
+    width: 80%;
+    margin-right: 20px;
+}
+.product-content-left-big-img img {
+    width: 20%;
+}
+.product-content-right {
+    width: 50%;
+    padding-left: 20px;
+}

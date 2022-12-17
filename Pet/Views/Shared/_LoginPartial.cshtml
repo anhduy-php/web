@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Database.Entities
+@inject SignInManager<Users> SignInManager
+@inject UserManager<Users> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="col10 header-icon">
+        <a href="/logout">
+            <img src="~/image/icon/dangnhap-icon.png" alt="login">
+            <span>Hello @User.Identity?.Name!</span>
+        </a>
+    </div>
+
+}
+else
+{
+
+    <div class="col10 header-icon">
+        <a href="/login">
+            <img src="~/image/icon/dangnhap-icon.png" alt="login">
+            <span>login</span>
+        </a>
+    </div>
+}
+

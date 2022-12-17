@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Database.Entities.Pets>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["cssIndex"] = "~/css/accessory.css";
+}
+<link href="~/css/accessory.css" rel="stylesheet" />
+ <!--section-->
+    <section class="main">
+        <section class="menu_main">
+            <h1>LIST OF PETS</h1>
+            <ul>
+                <li>
+                    <a href="#">Ikita Inu</a>
+                </li>
+                <li>
+                    <a href="#">Alaska</a>
+                </li>
+                <li>
+                    <a href="#">Vitespitz</a>
+                </li>
+                
+            </ul>
+        </section>
+        <section class="info_main">
+            <h1>Puppies are for sale</h1>
+            <section class="info">
+                @foreach (var item in Model)
+                {
+                <div class="info_product">
+                    <img src="@item.pet_ImgUrl4" alt="hinhanh" />
+                    <h6>@item.pet_Name</h6>
+                    <div>
+                        <i class="fas fa-star star1"></i>
+                        <i class="fas fa-star star2"></i>
+                        <i class="fas fa-star star3 "></i>
+                        <i class="fas fa-star star4"> </i>
+                        <i class="fas fa-star star5"></i>
+                    </div>
+                    <p>@item.pet_Price$</p>
+                    <div class="choose">
+@*                        <a href="#" class="dathang">Order</a>*@
+                        <a asp-controller="PetDetail" asp-action="Index" asp-route-id="@item.pet_Id" class="chitiet">Detail</a>
+                    </div>
+                </div>
+            }
+                
+                
+            </section>
+
+        </section>
+    </section>
+    <div class="back-to-top" id="backtop">
+        <a href="">
+            <img src="image/icon/icon-backtotop.png" alt="back to top" />
+        </a>
+    </div>

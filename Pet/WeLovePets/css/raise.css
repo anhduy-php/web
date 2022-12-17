@@ -1,0 +1,93 @@
+@import "style.css";
+/*HEADER*/
+
+header {
+    background-image: url(/image/icon/background-header.jpg);
+}
+
+.title {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.col30 img {
+    width: 70%;
+    height: 100%;
+}
+
+.title>.col40 {
+    padding-top: 6%;
+}
+
+.title>.col10 {
+    padding-top: 6%;
+}
+
+.title>.col40>.search {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.search input {
+    height: 60%;
+    display: block;
+    padding: 10px;
+    border: 2px solid #57c8ea;
+}
+
+input[type="search"] {
+    width: 90%;
+    border-radius: 5px 0 0 5px;
+}
+
+input[type="image"] {
+    background-color: #57c8ea;
+    border-radius: 0 5px 5px 0;
+}
+
+.header-icon {
+    text-align: center;
+}
+
+.header-icon a {
+    color: #57c8ea;
+}
+
+.col10>a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+/* SECTION */
+
+.main {
+    width: 80%;
+    margin: 10px auto;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+.main p {
+    padding: 10px;
+    text-align: justify;
+}
+
+.list-way {
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+.list-way h2 {
+    color: #ffa500;
+    padding: 15px 0 15px 0;
+}
+
+.image-dog {
+    width: 55%;
+}
+
+.image-dog img {
+    width: 100%;
+}
