@@ -1,14 +1,39 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Database.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Admin.Controllers
 {
     public class BillsController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        public BillsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+
         // GET: BillsController
         [Route("/management/bills")]
         public ActionResult Index()
         {
+            var cartPets = from a in _context.Users
+                               join b in _context.bills on a.Id equals b.bill_UserId
+                               select new { a, b};
+                ViewBag.bills = "";
+
+                var billModel = cartPets.Select(x => new BillsModel()
+                {
+                    Id = x.b.bill_Id,
+                    Name = x.a.Email,
+                    Price = x.b.bill_Total,
+                    Email = x.a.Email,
+                    IsPayment = x.b.bill_StatusPayment,
+                    IsReceive = x.b.bill_StatusReviceOrder,
+                    Created = x.b.bill_StartDateTime
+                });
+            ViewBag.Bils = billModel;
+
             return View();
         }
 

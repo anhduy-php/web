@@ -1,15 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Database.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Admin.Controllers
 {
     public class UsersController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        public UsersController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: UserController
         [Route("/management/users")]
         public ActionResult Index()
         {
-            return View();
+            var query = _context.users.Where(x => x.isDelete == false);
+
+            return View(query);
         }
 
         // GET: UserController/Details/5
@@ -61,9 +69,18 @@ namespace Admin.Controllers
         }
 
         // GET: UserController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            var queryUser = _context.users.FirstOrDefault(x => x.Id == id);
+            if (queryUser != null)
+            {
+                queryUser.isDelete = true;
+            }
+            
+            _context.SaveChanges();
+
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: UserController/Delete/5

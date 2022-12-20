@@ -1,5 +1,7 @@
-﻿@{
+﻿@model IEnumerable<Database.Entities.Pets>
+@{
     ViewData["Title"] = "Home Page";
+    int id = 1;
 }
 <!-- Widgets Start -->
 <div class="container-fluid pt-4 px-4">
@@ -17,23 +19,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>twitter</td>
-                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@{id++;}
+                                        @id
+                                    </th>
+                                    <td>@item.pet_Name</td>
+                                    <td>@item.pet_Price</td>
+                                </tr>
+                            }
+                           
+                            
                         </tbody>
                     </table>
                 </div>

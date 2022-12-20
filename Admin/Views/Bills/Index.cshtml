@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Admin.Models.BillsModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 <!-- Widgets Start -->
@@ -11,29 +12,31 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Receive</th>
+                                <th scope="col">Create</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>twitter</td>
-                            </tr>
+                            @{
+                                foreach (var item in @ViewBag.Bils)
+                                {
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>@item.Name</td>
+                                        <td>@item.Price</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.IsPayment</td>
+                                        <td>@item.IsReceive</td>
+                                        <td>@item.Created</td>
+                                    </tr>
+                                }
+                            }
+                            
+                            
                         </tbody>
                     </table>
                 </div>

@@ -27,6 +27,7 @@ namespace Pet.Controllers
             {
                 var cartPets = from a in _context.Users
                                join b in _context.bills on a.Id equals b.bill_UserId
+                               where a.Id == userId
                                select new { a, b};
                 ViewBag.bills = "";
 
@@ -41,12 +42,6 @@ namespace Pet.Controllers
                     Created = x.b.bill_StartDateTime
                 });
                 return View(billModel);
-
-
-
-
-
-
             }
 
 

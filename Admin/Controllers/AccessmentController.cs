@@ -1,38 +1,36 @@
-﻿using Database.Data;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Admin.Controllers
 {
-    public class PetsController : Controller
+    public class AccessmentController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public PetsController(ApplicationDbContext context)
+        private readonly ILogger<AccessmentController> _logger;
+        public AccessmentController(ILogger<AccessmentController> logger)
         {
-            _context = context;
+            _logger = logger;
         }
 
-        // GET: PetsController
-        [Route("/management/pets")]
+        // GET: AccessmentController
         public ActionResult Index()
         {
-            var query = _context.pets;
-            return View(query);
+            return View();
         }
 
-        // GET: PetsController/Details/5
+        // GET: AccessmentController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: PetsController/Create
+        // GET: AccessmentController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PetsController/Create
+        // POST: AccessmentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -47,13 +45,13 @@ namespace Admin.Controllers
             }
         }
 
-        // GET: PetsController/Edit/5
+        // GET: AccessmentController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: PetsController/Edit/5
+        // POST: AccessmentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -68,13 +66,13 @@ namespace Admin.Controllers
             }
         }
 
-        // GET: PetsController/Delete/5
+        // GET: AccessmentController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: PetsController/Delete/5
+        // POST: AccessmentController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
